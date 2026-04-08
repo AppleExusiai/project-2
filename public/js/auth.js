@@ -111,6 +111,8 @@ async function handleRegister(e) {
   const college = document.getElementById('college').value.trim();
   const major = document.getElementById('major').value.trim();
 
+  console.log('开始注册，用户名:', username);
+
   // 验证输入
   if (!username || !email || !password || !confirmPassword) {
     showMessage('message', '请填写所有必填项', 'error');
@@ -138,6 +140,7 @@ async function handleRegister(e) {
   }
 
   try {
+    console.log('正在发送注册请求到:', `${API_BASE_URL}/auth/register`);
     const response = await fetch(`${API_BASE_URL}/auth/register`, {
       method: 'POST',
       headers: {
@@ -156,9 +159,12 @@ async function handleRegister(e) {
       })
     });
 
+    console.log('收到响应，状态码:', response.status);
     const data = await response.json();
+    console.log('响应数据:', data);
 
     if (!response.ok) {
+      console.error('注册请求失败:', data.error);
       showMessage('message', data.error || '注册失败', 'error');
       return;
     }
@@ -170,6 +176,7 @@ async function handleRegister(e) {
       window.location.href = '/login';
     }, 1500);
   } catch (error) {
+    console.error('注册时出错:', error);
     showMessage('message', error.message || '注册失败，请重试', 'error');
   }
 }

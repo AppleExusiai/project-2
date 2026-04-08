@@ -8,41 +8,57 @@ const { db } = require('../db/db');
 router.post('/register', (req, res) => {
   const { username, email, password, confirmPassword, real_name, student_id, college, major } = req.body;
 
+  console.log('收到注册请求:', { username, email });
+
   // 验证输入
   if (!username || !email || !password) {
+    console.log('验证失败: 缺少必填字段');
     return res.status(400).json({ error: '用户名、邮箱和密码为必填项' });
   }
 
   if (password !== confirmPassword) {
+    console.log('验证失败: 密码不匹配');
     return res.status(400).json({ error: '两次输入的密码不一致' });
   }
 
   if (password.length < 6) {
+    console.log('验证失败: 密码过短');
     return res.status(400).json({ error: '密码长度至少为6位' });
   }
 
   // 检查邮箱格式
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
+    console.log('验证失败: 邮箱格式不正确');
     return res.status(400).json({ error: '邮箱格式不正确' });
   }
 
   // 加密密码
-  const hashedPassword = bcrypt.hashSync(password, 10);
+  let hashedPassword;
+  try {
+    hashedPassword = bcrypt.hashSync(password, 10);
+    console.log('密码加密成功');
+  } catch (hashErr) {
+    console.error('密码加密失败:', hashErr);
+    return res.status(500).json({ error: '处理密码失败' });
+  }
 
   // 保存到数据库
+  console.log('开始插入数据库...');
   db.run(
     `INSERT INTO users (username, email, password, real_name, student_id, college, major) 
      VALUES (?, ?, ?, ?, ?, ?, ?)`,
     [username, email, hashedPassword, real_name, student_id, college, major],
     (err) => {
       if (err) {
+        console.error('数据库插入错误:', err);
         if (err.message.includes('UNIQUE')) {
           return res.status(400).json({ error: '用户名或邮箱已被注册' });
         }
-        return res.status(500).json({ error: '注册失败' });
+        return res.status(500).json({ error: '注册失败: ' + err.message });
       }
 
+      console.log('用户注册成功:', username);
       res.status(201).json({ 
         message: '注册成功，请登录',
         username: username 
