@@ -1,5 +1,5 @@
 // 通用工具函数
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = '/api';
 
 // 显示消息
 function showMessage(elementId, message, type = 'success') {

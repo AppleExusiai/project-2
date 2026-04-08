@@ -27,7 +27,8 @@ async function handleLogin(e) {
 
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value;
-  const rememberMe = document.querySelector('input[name="rememberMe"]').checked;
+  const rememberMeInput = document.querySelector('input[name="rememberMe"]');
+  const rememberMe = rememberMeInput ? rememberMeInput.checked : false;
 
   if (!username || !password) {
     showMessage('message', '请填写用户名和密码', 'error');
