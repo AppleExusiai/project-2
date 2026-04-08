@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防诈骗知识学习 - 高校防诈骗宣传平台</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/knowledge.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">防诈骗平台</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">首页</a></li>
+        <li><a href="/cases">案例库</a></li>
+        <li><a href="/knowledge">知识学习</a></li>
+        <li><a href="/survey">问卷调查</a></li>
+        <li id="authButtons">
+          <a href="/login" class="btn btn-primary">登录</a>
+        </li>
+        <li id="userMenu" class="user-menu" style="display: none;">
+          <img id="userAvatar" src="" alt="用户头像" class="user-avatar">
+          <span id="userName"></span>
+          <div class="dropdown">
+            <a href="/profile">个人中心</a>
+            <a href="/dashboard">学习中心</a>
+            <a href="#" id="logoutBtn">登出</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 页面头 -->
+  <section class="page-header">
+    <div class="container">
+      <h1>防诈骗知识学习中心</h1>
+      <p>系统学习防诈骗知识 | 提升自我防护能力</p>
+    </div>
+  </section>
+
+  <div class="knowledge-page-container">
+    <!-- 侧边栏 -->
+    <aside class="knowledge-sidebar">
+      <div class="filter-section">
+        <h3>课程类别</h3>
+        <div class="filter-options" id="categoryFilters">
+          <label class="radio-item">
+            <input type="radio" name="category" value="all" checked>
+            <span>全部课程</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3>难度等级</h3>
+        <div class="filter-options" id="levelFilters">
+          <label class="radio-item">
+            <input type="radio" name="level" value="all" checked>
+            <span>全部等级</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="stats-box">
+        <h3>您的学习统计</h3>
+        <div class="stat-item">
+          <span>已完成课程</span>
+          <strong id="userCompletedCount">0</strong>
+        </div>
+        <div class="stat-item">
+          <span>学习总时长</span>
+          <strong id="userTotalTime">0分钟</strong>
+        </div>
+        <div class="stat-item">
+          <span>完成度</span>
+          <strong id="userCompletionRate">0%</strong>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 主要内容 -->
+    <main class="knowledge-main">
+      <!-- Tab切换 -->
+      <div class="knowledge-tabs">
+        <button class="tab-btn active" data-tab="modules">课程列表</button>
+        <button class="tab-btn" data-tab="progress">我的进度</button>
+      </div>
+
+      <!-- 课程列表 -->
+      <section id="modules-tab" class="tab-content active">
+        <div class="modules-header">
+          <h2>学习课程</h2>
+          <div class="sort-controls">
+            <select id="sortSelect" class="sort-select">
+              <option value="newest">最新发布</option>
+              <option value="oldest">最早发布</option>
+              <option value="duration">按时长</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="modulesList" class="modules-list">
+          <!-- 课程卡片将通过JS加载 -->
+        </div>
+
+        <!-- 分页 -->
+        <div id="modulesPagination" class="pagination">
+          <!-- 分页按钮将通过JS生成 -->
+        </div>
+      </section>
+
+      <!-- 学习进度 -->
+      <section id="progress-tab" class="tab-content">
+        <h2>我的学习进度</h2>
+        <div id="progressList" class="progress-list">
+          <!-- 学习进度将通过JS加载 -->
+        </div>
+        <div id="emptyProgress" class="empty-message">
+          <p>您还没有开始学习任何课程，<a href="#modules-tab">去开始学习</a>吧！</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 课程详情模态框 -->
+  <div id="moduleModal" class="modal">
+    <div class="modal-content modal-lg">
+      <span class="close">&times;</span>
+      <div id="moduleDetail" class="module-detail">
+        <!-- 课程详情将通过JS加载 -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 高校防诈骗宣传平台 | 为学生安全保驾护航</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/knowledge.js"></script>
+</body>
+</html>

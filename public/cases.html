@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防诈骗案例库 - 高校防诈骗宣传平台</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/cases.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">防诈骗平台</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">首页</a></li>
+        <li><a href="/cases">案例库</a></li>
+        <li><a href="/knowledge">知识学习</a></li>
+        <li><a href="/survey">问卷调查</a></li>
+        <li id="authButtons">
+          <a href="/login" class="btn btn-primary">登录</a>
+        </li>
+        <li id="userMenu" class="user-menu" style="display: none;">
+          <img id="userAvatar" src="" alt="用户头像" class="user-avatar">
+          <span id="userName"></span>
+          <div class="dropdown">
+            <a href="/profile">个人中心</a>
+            <a href="/dashboard">学习中心</a>
+            <a href="#" id="logoutBtn">登出</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 页面头 -->
+  <section class="page-header">
+    <div class="container">
+      <h1>防诈骗案例库</h1>
+      <p>真实诈骗案例赏析 | 掌握诈骗套路，远离诈骗陷阱</p>
+    </div>
+  </section>
+
+  <div class="cases-page-container">
+    <!-- 侧边栏筛选 -->
+    <aside class="cases-sidebar">
+      <div class="filter-section">
+        <h3>按诈骗类型筛选</h3>
+        <div class="filter-options" id="typeFilters">
+          <label class="checkbox-item">
+            <input type="checkbox" value="all" checked>
+            <span>全部诈骗类型</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3>按风险等级筛选</h3>
+        <div class="filter-options" id="severityFilters">
+          <label class="checkbox-item">
+            <input type="checkbox" value="all" checked>
+            <span>全部等级</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="search-section">
+        <input type="text" id="searchInput" placeholder="搜索案例..." class="search-box">
+        <button id="searchBtn" class="btn btn-primary btn-full">搜索</button>
+      </div>
+    </aside>
+
+    <!-- 主要内容 -->
+    <main class="cases-main">
+      <div class="cases-header">
+        <h2>全部案例</h2>
+        <div class="sort-controls">
+          <select id="sortSelect" class="sort-select">
+            <option value="newest">最新发布</option>
+            <option value="oldest">最早发布</option>
+            <option value="severity">按风险等级</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="casesList" class="cases-list">
+        <!-- 案例列表将通过JS加载 -->
+      </div>
+
+      <!-- 分页 -->
+      <div id="pagination" class="pagination">
+        <!-- 分页按钮将通过JS生成 -->
+      </div>
+    </main>
+  </div>
+
+  <!-- 案例详情模态框 -->
+  <div id="caseModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="caseDetail" class="case-detail">
+        <!-- 案例详情将通过JS加载 -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 高校防诈骗宣传平台 | 为学生安全保驾护航</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/cases.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册 - 高校防诈骗宣传平台</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar navbar-light">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">防诈骗平台</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="auth-container">
+    <div class="auth-box register-box">
+      <div class="auth-header">
+        <h2>创建账户</h2>
+        <p>加入防诈骗平台社区</p>
+      </div>
+
+      <form id="registerForm" class="auth-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username" placeholder="6-16个字符" required>
+            <small class="form-hint">只能包含字母、数字和下划线</small>
+          </div>
+
+          <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" id="email" name="email" placeholder="输入你的邮箱" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" placeholder="至少6位字符" required>
+            <small class="form-hint">建议使用大小写字母、数字和特殊字符组合</small>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">确认密码</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="再次输入密码" required>
+          </div>
+        </div>
+
+        <div class="form-divider">
+          <span>学生信息（可选）</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="realName">真实姓名</label>
+            <input type="text" id="realName" name="real_name" placeholder="您的真实姓名">
+          </div>
+
+          <div class="form-group">
+            <label for="studentId">学号</label>
+            <input type="text" id="studentId" name="student_id" placeholder="您的学号">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="college">所在学院</label>
+            <input type="text" id="college" name="college" placeholder="如：计算机学院">
+          </div>
+
+          <div class="form-group">
+            <label for="major">专业</label>
+            <input type="text" id="major" name="major" placeholder="如：计算机科学与技术">
+          </div>
+        </div>
+
+        <div class="form-agreement">
+          <label class="checkbox-label">
+            <input type="checkbox" name="agreement" required>
+            我已阅读并同意<a href="#" onclick="event.preventDefault()">《服务条款》</a>和<a href="#" onclick="event.preventDefault()">《隐私政策》</a>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">创建账户</button>
+      </form>
+
+      <div class="auth-link">
+        已有账户？<a href="/login">立即登录</a>
+      </div>
+
+      <div id="message" class="message"></div>
+    </div>
+
+    <div class="auth-illustration">
+      <div class="illustration-icon">📚</div>
+      <h3>加入我们</h3>
+      <p>学习防诈骗知识，提升安全意识</p>
+      <ul class="security-tips">
+        <li>✓ 免费防诈骗知识学习</li>
+        <li>✓ 参与在线问卷调查</li>
+        <li>✓ 测试防诈骗能力</li>
+        <li>✓ 追踪学习进度</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 高校防诈骗宣传平台 | 为学生安全保驾护航</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

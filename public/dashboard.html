@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学习中心 - 高校防诈骗宣传平台</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">防诈骗平台</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">首页</a></li>
+        <li><a href="/cases">案例库</a></li>
+        <li><a href="/knowledge">知识学习</a></li>
+        <li><a href="/survey">问卷调查</a></li>
+        <li id="authButtons">
+          <a href="/login" class="btn btn-primary">登录</a>
+        </li>
+        <li id="userMenu" class="user-menu" style="display: none;">
+          <img id="userAvatar" src="" alt="用户头像" class="user-avatar">
+          <span id="userName"></span>
+          <div class="dropdown">
+            <a href="/profile">个人中心</a>
+            <a href="/dashboard">学习中心</a>
+            <a href="#" id="logoutBtn">登出</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <!-- 侧边栏 -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-menu">
+        <a href="#" class="menu-item active" data-section="overview">
+          <span class="menu-icon">📊</span>
+          <span class="menu-text">概览</span>
+        </a>
+        <a href="#" class="menu-item" data-section="learning">
+          <span class="menu-icon">📚</span>
+          <span class="menu-text">学习进度</span>
+        </a>
+        <a href="#" class="menu-item" data-section="tests">
+          <span class="menu-icon">📝</span>
+          <span class="menu-text">测试记录</span>
+        </a>
+        <a href="#" class="menu-item" data-section="surveys">
+          <span class="menu-icon">📋</span>
+          <span class="menu-text">问卷记录</span>
+        </a>
+        <a href="/profile" class="menu-item">
+          <span class="menu-icon">👤</span>
+          <span class="menu-text">个人资料</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- 主要内容 -->
+    <main class="dashboard-main">
+      <!-- 概览部分 -->
+      <section id="overview" class="dashboard-section active">
+        <h2>学习概览</h2>
+        
+        <div class="overview-grid">
+          <div class="overview-card">
+            <div class="card-icon">📚</div>
+            <div class="card-content">
+              <div class="card-value" id="completedModules">0</div>
+              <div class="card-label">已完成课程</div>
+            </div>
+          </div>
+
+          <div class="overview-card">
+            <div class="card-icon">✅</div>
+            <div class="card-content">
+              <div class="card-value" id="completionRate">0%</div>
+              <div class="card-label">完成度</div>
+            </div>
+          </div>
+
+          <div class="overview-card">
+            <div class="card-icon">📝</div>
+            <div class="card-content">
+              <div class="card-value" id="testCount">0</div>
+              <div class="card-label">参加测试</div>
+            </div>
+          </div>
+
+          <div class="overview-card">
+            <div class="card-icon">📊</div>
+            <div class="card-content">
+              <div class="card-value" id="surveyCount">0</div>
+              <div class="card-label">参加问卷</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-section">
+          <h3>学习进度</h3>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+          </div>
+          <p class="progress-text">您已完成 <span id="progressText">0</span> 个学习模块</p>
+        </div>
+
+        <div class="recent-activities">
+          <h3>推荐学习</h3>
+          <div id="recommendedModules" class="modules-list">
+            <!-- 推荐模块将通过JS加载 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 学习进度部分 -->
+      <section id="learning" class="dashboard-section">
+        <h2>我的学习进度</h2>
+        
+        <div class="learning-filters">
+          <button class="filter-btn active" data-category="all">全部</button>
+          <button class="filter-btn" data-category="基础知识">基础知识</button>
+          <button class="filter-btn" data-category="网络安全">网络安全</button>
+          <button class="filter-btn" data-category="隐私保护">隐私保护</button>
+          <button class="filter-btn" data-category="支付安全">支付安全</button>
+        </div>
+
+        <div id="learningList" class="learning-list">
+          <!-- 学习记录将通过JS加载 -->
+        </div>
+      </section>
+
+      <!-- 测试记录部分 -->
+      <section id="tests" class="dashboard-section">
+        <h2>我的测试记录</h2>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>测试类型</th>
+              <th>测试时间</th>
+              <th>得分</th>
+              <th>是否通过</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="testsTableBody">
+            <!-- 测试记录将通过JS加载 -->
+          </tbody>
+        </table>
+        <div id="testsEmpty" class="empty-message">
+          <p>暂无测试记录，<a href="/knowledge">去参加测试</a>吧！</p>
+        </div>
+      </section>
+
+      <!-- 问卷记录部分 -->
+      <section id="surveys" class="dashboard-section">
+        <h2>我的问卷记录</h2>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>问卷标题</th>
+              <th>回答时间</th>
+              <th>得分</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="surveysTableBody">
+            <!-- 问卷记录将通过JS加载 -->
+          </tbody>
+        </table>
+        <div id="surveysEmpty" class="empty-message">
+          <p>暂无问卷记录，<a href="/survey">去参加问卷</a>吧！</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 高校防诈骗宣传平台 | 为学生安全保驾护航</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

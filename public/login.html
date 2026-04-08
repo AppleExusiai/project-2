@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录 - 高校防诈骗宣传平台</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar navbar-light">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">防诈骗平台</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="auth-container">
+    <div class="auth-box">
+      <div class="auth-header">
+        <h2>用户登录</h2>
+        <p>欢迎回到防诈骗平台</p>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="username">用户名或邮箱</label>
+          <input type="text" id="username" name="username" placeholder="请输入用户名或邮箱" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input type="password" id="password" name="password" placeholder="请输入密码" required>
+        </div>
+
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" name="rememberMe">
+            记住我
+          </label>
+          <a href="#" class="forgot-password">忘记密码？</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">登录</button>
+      </form>
+
+      <div class="auth-link">
+        还没有账户？<a href="/register">立即注册</a>
+      </div>
+
+      <div class="auth-divider">或者</div>
+
+      <div class="social-login">
+        <button class="social-btn wechat" id="wechatLogin" disabled title="微信登录功能开发中">
+          <span>微信登录</span>
+        </button>
+        <button class="social-btn qq" id="qqLogin" disabled title="QQ登录功能开发中">
+          <span>QQ登录</span>
+        </button>
+      </div>
+
+      <div id="message" class="message"></div>
+    </div>
+
+    <div class="auth-illustration">
+      <div class="illustration-icon">🔐</div>
+      <h3>安全登录</h3>
+      <p>保护您的账户安全是我们的首要任务</p>
+      <ul class="security-tips">
+        <li>✓ 使用强密码保护账户</li>
+        <li>✓ 定期修改密码</li>
+        <li>✓ 不在公共设备上登录</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 高校防诈骗宣传平台 | 为学生安全保驾护航</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

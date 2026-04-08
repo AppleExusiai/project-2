@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问卷调查 - 高校防诈骗宣传平台</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/survey.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">防诈骗平台</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">首页</a></li>
+        <li><a href="/cases">案例库</a></li>
+        <li><a href="/knowledge">知识学习</a></li>
+        <li><a href="/survey">问卷调查</a></li>
+        <li id="authButtons">
+          <a href="/login" class="btn btn-primary">登录</a>
+        </li>
+        <li id="userMenu" class="user-menu" style="display: none;">
+          <img id="userAvatar" src="" alt="用户头像" class="user-avatar">
+          <span id="userName"></span>
+          <div class="dropdown">
+            <a href="/profile">个人中心</a>
+            <a href="/dashboard">学习中心</a>
+            <a href="#" id="logoutBtn">登出</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 页面头 -->
+  <section class="page-header">
+    <div class="container">
+      <h1>问卷调查</h1>
+      <p>您的反馈很重要 | 帮助我们改进平台</p>
+    </div>
+  </section>
+
+  <div class="survey-page-container">
+    <div class="container">
+      <!-- 问卷列表 -->
+      <section id="surveyList" class="survey-section">
+        <h2>可用问卷</h2>
+        <div id="surveysGrid" class="surveys-grid">
+          <!-- 问卷卡片将通过JS加载 -->
+        </div>
+      </section>
+
+      <!-- 问卷填写表单 -->
+      <section id="surveyForm" class="survey-section" style="display: none;">
+        <div class="survey-header">
+          <button class="btn btn-outline" id="backBtn">← 返回</button>
+          <h2 id="surveyTitle"></h2>
+        </div>
+
+        <form id="currentSurveyForm" class="current-survey-form">
+          <div id="surveyContent">
+            <!-- 问卷内容将通过JS加载 -->
+          </div>
+
+          <div class="survey-actions">
+            <button type="submit" class="btn btn-primary btn-large">提交问卷</button>
+          </div>
+        </form>
+
+        <div id="surveyMessage" class="message"></div>
+      </section>
+
+      <!-- 我的问卷记录 -->
+      <section id="myRecords" class="survey-section">
+        <h2>我的问卷记录</h2>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>问卷标题</th>
+              <th>回答时间</th>
+              <th>得分</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="recordsTableBody">
+            <!-- 问卷记录将通过JS加载 -->
+          </tbody>
+        </table>
+        <div id="emptyRecords" class="empty-message">
+          <p>您还没有填写过任何问卷</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- 结果模态框 -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="result-content">
+        <div class="result-header">
+          <h2>问卷已提交</h2>
+        </div>
+        <div class="result-score">
+          <div class="score-circle">
+            <span id="resultScore">0</span>
+            <span class="score-unit">分</span>
+          </div>
+        </div>
+        <div class="result-message" id="resultMessage"></div>
+        <button class="btn btn-primary btn-full" id="closeResultBtn">返回</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 高校防诈骗宣传平台 | 为学生安全保驾护航</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/survey.js"></script>
+</body>
+</html>

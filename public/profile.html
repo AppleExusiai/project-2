@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人中心 - 高校防诈骗宣传平台</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">防诈骗平台</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">首页</a></li>
+        <li><a href="/cases">案例库</a></li>
+        <li><a href="/knowledge">知识学习</a></li>
+        <li><a href="/survey">问卷调查</a></li>
+        <li id="authButtons" style="display: none;">
+          <a href="/login" class="btn btn-primary">登录</a>
+        </li>
+        <li id="userMenu" class="user-menu">
+          <img id="userAvatar" src="" alt="用户头像" class="user-avatar">
+          <span id="userName"></span>
+          <div class="dropdown">
+            <a href="/profile">个人中心</a>
+            <a href="/dashboard">学习中心</a>
+            <a href="#" id="logoutBtn">登出</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 页面头 -->
+  <section class="profile-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="avatar-section">
+          <img id="profileAvatar" src="" alt="用户头像" class="profile-avatar">
+          <div class="avatar-upload">
+            <label for="avatarInput" class="btn btn-small btn-secondary">更换头像</label>
+            <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+          </div>
+        </div>
+        <div class="user-info">
+          <h1 id="displayName">用户名</h1>
+          <p id="userEmail">邮箱</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="profile-page-container">
+    <div class="container">
+      <div class="profile-grid">
+        <!-- 侧边栏菜单 -->
+        <aside class="profile-sidebar">
+          <nav class="profile-menu">
+            <a href="#" class="menu-item active" data-section="info">
+              <span>👤</span> 基本信息
+            </a>
+            <a href="#" class="menu-item" data-section="password">
+              <span>🔒</span> 修改密码
+            </a>
+            <a href="#" class="menu-item" data-section="settings">
+              <span>⚙️</span> 隐私设置
+            </a>
+          </nav>
+        </aside>
+
+        <!-- 主要内容 -->
+        <main class="profile-main">
+          <!-- 基本信息 -->
+          <section id="info" class="profile-section active">
+            <h2>基本信息</h2>
+            <form id="profileForm" class="profile-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="realName">真实姓名</label>
+                  <input type="text" id="realName" name="real_name" placeholder="您的真实姓名">
+                </div>
+                <div class="form-group">
+                  <label for="email">邮箱</label>
+                  <input type="email" id="email" name="email" placeholder="您的邮箱" disabled>
+                  <small class="form-hint">邮箱不可修改</small>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="studentId">学号</label>
+                  <input type="text" id="studentId" name="student_id" placeholder="您的学号">
+                </div>
+                <div class="form-group">
+                  <label for="phone">联系电话</label>
+                  <input type="tel" id="phone" name="phone" placeholder="您的联系电话">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="college">所在学院</label>
+                  <input type="text" id="college" name="college" placeholder="如：计算机学院">
+                </div>
+                <div class="form-group">
+                  <label for="major">专业</label>
+                  <input type="text" id="major" name="major" placeholder="如：计算机科学与技术">
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">保存修改</button>
+                <button type="reset" class="btn btn-outline">取消</button>
+              </div>
+            </form>
+
+            <div id="profileMessage" class="message"></div>
+          </section>
+
+          <!-- 修改密码 -->
+          <section id="password" class="profile-section">
+            <h2>修改密码</h2>
+            <form id="passwordForm" class="profile-form">
+              <div class="form-group">
+                <label for="oldPassword">当前密码</label>
+                <input type="password" id="oldPassword" name="oldPassword" placeholder="请输入当前密码" required>
+              </div>
+
+              <div class="form-group">
+                <label for="newPassword">新密码</label>
+                <input type="password" id="newPassword" name="newPassword" placeholder="请输入新密码" required>
+                <small class="form-hint">密码长度至少6位，建议使用大小写字母和数字组合</small>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword">确认新密码</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请确认新密码" required>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">修改密码</button>
+                <button type="reset" class="btn btn-outline">取消</button>
+              </div>
+            </form>
+
+            <div id="passwordMessage" class="message"></div>
+          </section>
+
+          <!-- 隐私设置 -->
+          <section id="settings" class="profile-section">
+            <h2>隐私设置</h2>
+            <div class="settings-list">
+              <div class="setting-item">
+                <div class="setting-content">
+                  <h4>显示个人资料</h4>
+                  <p>允许其他用户查看您的公开个人资料</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="showProfile" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-content">
+                  <h4>学习进度可见</h4>
+                  <p>允许其他用户查看您的学习进度统计</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="showProgress" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-content">
+                  <h4>接收邮件通知</h4>
+                  <p>接收关于平台更新和学习提醒的邮件</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="emailNotifications" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-content">
+                  <h4>数据统计</h4>
+                  <p>允许我们收集使用数据以改进平台</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="dataAnalytics" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="danger-zone">
+              <h3>危险区域</h3>
+              <button class="btn btn-danger" id="deleteAccountBtn">删除账户</button>
+              <p>删除账户是不可逆的操作，请谨慎操作</p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 高校防诈骗宣传平台 | 为学生安全保驾护航</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>
